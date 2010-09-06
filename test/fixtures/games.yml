@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  password: MyString
+  state: MyString
+  first_turn: 1
+
+two:
+  password: MyString
+  state: MyString
+  first_turn: 1

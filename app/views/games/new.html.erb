@@ -1,0 +1,20 @@
+<h1>Games#new</h1>
+<%= form_tag :controller => "games" %>
+  <table>
+		<tr>
+			<td><label for="player1_name">Your Name:</label></td> 
+			<td><%= text_field_tag "player1_name" %></td>
+		</tr>
+		<tr>
+		<tr>
+			<td><label for="player2_name">Player 2 name:</label></td> 
+			<td><%= text_field_tag "player2_name" %></td>
+		</tr>
+		<tr>
+			<td><label for="first_turn">Which Player will have the first turn?</label></td> 
+			<td><%= select_tag "first_turn", options_for_select(['1', '2']) %></td>
+		</tr>
+	</table>
+	<%= submit_tag "Create game" %> 
+</form>
+  
