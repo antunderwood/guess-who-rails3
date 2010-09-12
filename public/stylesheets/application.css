@@ -1,4 +1,138 @@
 #message_panel {
-  width: 400px;
-  height: 300px;
+  position:absolute;
+	top: 15px;
+	left: 600px;
+	width:350px;
+	height:200px;
+	padding:25px 10px 25px 20px;
+	font-size:0.9em;
+	font-family:arial, sans serif;
+	background-color:#AAAAAA;
+	color:#FFFFFF;
+	text-align:left;
+}
+.card_wrapper{
+  position: relative;
+  height: 100px;
+  width: 77px;
+}
+#card-1 {
+  position: absolute;
+  top: 80px;
+  left:30px;
+}
+#card-2 {
+  position: absolute;
+  top: 80px;
+  left:120px;
+}
+#card-3 {
+  position: absolute;
+  top: 80px;
+  left:210px;
+}
+#card-4 {
+  position: absolute;
+  top: 80px;
+  left:300px;
+}
+#card-5 {
+  position: absolute;
+  top: 80px;
+  left:390px;
+}
+#card-6 {
+  position: absolute;
+  top: 80px;
+  left:480px;
+}
+#card-7 {
+  position: absolute;
+  top: 203px;
+  left:30px;
+}
+#card-8 {
+  position: absolute;
+  top: 203px;
+  left:120px;
+}
+#card-9 {
+  position: absolute;
+  top: 203px;
+  left:210px;
+}
+#card-10 {
+  position: absolute;
+  top: 203px;
+  left:300px;
+}
+#card-11 {
+  position: absolute;
+  top: 203px;
+  left:390px;
+}
+#card-12 {
+  position: absolute;
+  top: 203px;
+  left:480px;
+}
+#card-13 {
+  position: absolute;
+  top: 326px;
+  left:30px;
+}
+#card-14 {
+  position: absolute;
+  top: 326px;
+  left:120px;
+}
+#card-15 {
+  position: absolute;
+  top: 326px;
+  left:210px;
+}
+#card-16 {
+  position: absolute;
+  top: 326px;
+  left:300px;
+}
+#card-17 {
+  position: absolute;
+  top: 326px;
+  left:390px;
+}
+#card-18 {
+  position: absolute;
+  top: 326px;
+  left:480px;
+}
+#card-19 {
+  position: absolute;
+  top: 449px;
+  left:30px;
+}
+#card-20 {
+  position: absolute;
+  top: 449px;
+  left:120px;
+}
+#card-21 {
+  position: absolute;
+  top: 449px;
+  left:210px;
+}
+#card-22 {
+  position: absolute;
+  top: 449px;
+  left:300px;
+}
+#card-23 {
+  position: absolute;
+  top: 449px;
+  left:390px;
+}
+#card-24 {
+  position: absolute;
+  top: 449px;
+  left:480px;
 }

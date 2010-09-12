@@ -8,4 +8,6 @@ $(function()
       horizontalGutter: 10
     }
   );
+  // quick flip setup
+  $('.card_wrapper').quickFlip({ vertical: true, panelWidth: 77, panelHeight: 100});
 });
