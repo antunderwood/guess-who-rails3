@@ -1,5 +1,8 @@
 GuessWhoRails3::Application.routes.draw do
+  get "messages/new"
+
   resources :games
+  resources :messages
 
   devise_for :users
 

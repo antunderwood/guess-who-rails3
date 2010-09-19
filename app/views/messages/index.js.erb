@@ -1,0 +1,3 @@
+<% @undisplayed_messages.each do |message| %>
+  <%= raw(message_js_call(message.content)) %>
+<% end %>

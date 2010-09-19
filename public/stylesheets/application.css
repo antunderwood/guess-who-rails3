@@ -1,15 +1,83 @@
+body{
+  font-family: Helvetica, Arial, sans-serif;
+  background-color:#212121;
+	color: #FFFFFF;
+}
+#top_image {
+	margin: 10px auto;
+	padding: 5px 20px;
+}
 #message_panel {
   position:absolute;
 	top: 15px;
 	left: 600px;
 	width:350px;
-	height:200px;
-	padding:25px 10px 25px 20px;
+	height:515px;
+  padding-top: 25px;
+	overflow: auto;
 	font-size:0.9em;
 	font-family:arial, sans serif;
 	background-color:#AAAAAA;
 	color:#FFFFFF;
 	text-align:left;
+}
+.box{
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+#question_panel{
+	position:absolute; top: 590px; left:30px;
+	width:  550px;
+}
+#response_panel{
+	position:absolute; top: 590px; left:600px;
+	width:  375px;
+	font-size: 0.9em;
+	font-family:arial, sans serif;
+}
+.word_button{
+	margin :  5px 10px 5px 0;
+	padding: 0 5px 0 5px;
+	height:  33px;
+	line-height:  33px;;
+	background:  url("../images/word_button.png");
+	background-repeat:  repeat-x;
+	color:#FFFFFF;
+	border: 2px solid #313131;
+	float:  left;
+	vertical-align: middle;
+}
+.question{
+  color: #34A12E;
+  font-size:120%;
+}
+#yes_button, #no_button, #yes_last_card_button, #no_last_card_button{
+	margin :  0px 10px 5px 0;
+	padding: 0 20px 0 20px;
+	height:  33px;
+	line-height:  33px;
+	background-repeat:  repeat-x;
+	color:#FFFFFF;
+	border: 2px solid #313131;
+	float:  left;
+	vertical-align: middle;
+	font-size:  120%;
+	color: #FFFFFF;
+	text-decoration:  none;
+}
+#yes_button, #yes_last_card_button{
+	background:  url("../images/yes_button.png");
+}
+#no_button, #no_last_card_button{
+	background:  url("../images/no_button.png");
+}
+#yes_button a, #no_button a, #yes_last_card_button a, #no_last_card_button a{
+	font-size:  120%;
+	color: #FFFFFF;
+	text-decoration:  none;
+}
+#chat_content{
+  font-size: 120%;
 }
 .card_wrapper{
   position: relative;

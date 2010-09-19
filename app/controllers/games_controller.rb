@@ -31,12 +31,13 @@ class GamesController < ApplicationController
       player1.save
       player2.save
     end
+    @words = ["a", "head","mouth","eye","eyes","nose","eyes on stalks","skin","one","two","three","blue","green","orange","spotty","squiggly","circular","oval","triangular","happy","sad"]
     render :show
   end
 
   def show
-    #@player will be defined if we have come to the show action after game#create, otherwose the player will be player2 which is the last of the players created for the game
-    @player ||= @game.players.last
+    @player = @game.players.last
+    @words = ["a", "head","mouth","eye","eyes","nose","eyes on stalks","skin","one","two","three","blue","green","orange","spotty","squiggly","circular","oval","triangular","happy","sad"]
   end
   
   private
