@@ -1,5 +1,8 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+soundManager.url = '/sounds/'; // override default SWF url
+soundManager.debugMode = false;
+soundManager.onload = function() {soundManager.createSound('message','/sounds/message.mp3');};
 $(function()
 {
   var scrollPaneSettings = {

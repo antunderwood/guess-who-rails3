@@ -1,3 +1,4 @@
 <% @undisplayed_messages.each do |message| %>
-  <%= raw(message_js_call(message.content)) %>
+  <%= raw(display_message(message.content)) %>
 <% end %>
+soundManager.play('message');
