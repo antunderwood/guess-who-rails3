@@ -14,6 +14,7 @@ body{
 	width:350px;
 	height:515px;
   padding-top: 25px;
+  padding-left: 15px;
 	overflow: auto;
 	font-size:0.9em;
 	font-family:arial, sans serif;

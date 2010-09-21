@@ -10,7 +10,7 @@
     width: 295px !important; /* intended total box width - padding-right(next) */
     width: 280px; /* IE Win = width - padding */
     padding-right: 15px; /* the gap on the right edge of the image (not content padding) */
-    margin-left: 15px; /* use to position the box */ 
+    /* margin-left: 15px; use to position the box */ 
 	margin-bottom: 10px;
 } 
 
