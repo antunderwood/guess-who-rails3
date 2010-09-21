@@ -1,23 +1,24 @@
 class GamesController < ApplicationController
-   before_filter :authenticate_user!, :only => :new
-   before_filter :game_accessible?, :only => :show
+  before_filter :authenticate_user!, :only => :new
+  before_filter :game_accessible?, :only => :show
+
   def new
-   
+
   end
-  
+
   def create
     @game = Game.new
     @game.state = "waiting_for_both_player_login"
     @game.first_turn = params[:first_turn]
     @game.password = generate_password(8)
-  
+
     player1 = Player.new
     player1.name = params[:player1_name]
     player1.chosen_card = rand(24)
     player1.game = @game
-    
+
     @player = player1
-    
+
     player2 = Player.new
     player2.name = params[:player2_name]
     player2.chosen_card = rand(24)
@@ -39,7 +40,7 @@ class GamesController < ApplicationController
     @player = @game.players.last
     @words = ["a", "head","mouth","eye","eyes","nose","eyes on stalks","skin","one","two","three","blue","green","orange","spotty","squiggly","circular","oval","triangular","happy","sad"]
   end
-  
+
   private
   def generate_password(len = 8 )
     chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a

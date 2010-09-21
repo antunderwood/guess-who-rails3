@@ -1,6 +1,8 @@
-<%= javascript_include_tag "soundmanager2-jsmin" %>
-<%= javascript_include_tag :defaults %>
-<%= javascript_include_tag "jquery.jscrollpane.min", "jquery.mousewheel", "jquery.quickflip.min", "jquery.periodic" %>
+<% content_for :javascript do %>
+  <%= javascript_include_tag "soundmanager2-jsmin" %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery.jscrollpane.min", "jquery.mousewheel", "jquery.quickflip.min", "jquery.periodic" %>
+<% end %>
 <!-- Top Image-->
 <div id="top_image">
 	<%= image_tag "guess_who.png" %>
