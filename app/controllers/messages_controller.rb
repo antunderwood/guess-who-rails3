@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   def  index
-    # @undisplayed_messages = Message.undisplayed(params[:game_id],params[:player_id])
-    @undisplayed_messages = Message.undisplayed(138,275)
+    @undisplayed_messages = Message.undisplayed(params[:game_id],params[:player_id])
   end
   def new
     message = Message.new(params[:message])
