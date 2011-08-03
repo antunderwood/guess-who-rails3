@@ -9,3 +9,16 @@ two:
   password: MyString
   state: MyString
   first_turn: 1
+
+# == Schema Information
+#
+# Table name: games
+#
+#  id         :integer         not null, primary key
+#  password   :string(255)
+#  state      :string(255)
+#  first_turn :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

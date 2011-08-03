@@ -11,7 +11,7 @@
 <%= render :partial => "card", :collection => (1..24).to_a %>
 <!-- Ask a question panel -->
 <div id="question_panel">
-  <%= form_tag new_message_path, :method => :get, :remote => true, :id => "question_form" %>
+  <%= form_tag messages_path, :remote => true, :id => "question_form" %>
     <%= hidden_field_tag "message[message_type]", "question", :id => "question_message_type" %>
     <%= hidden_field_tag "message[game_id]", @game.id, :id => "question_game_id" %>
     <%= hidden_field_tag "message[player_id]", @player.id, :id => "question_player_id" %>
@@ -26,7 +26,7 @@
 <!-- Response Panel -->
 <div id="response_panel">
   <!-- Chat -->
-  <%= form_tag new_message_path, :method => :get, :remote => true %>
+  <%= form_tag messages_path, :remote => true %>
     <%= hidden_field_tag "message[message_type]", "chat", :id => "chat_message_type"  %>
     <%= hidden_field_tag "message[game_id]", @game.id, :id => "chat_game_id"  %>
     <%= hidden_field_tag "message[player_id]", @player.id, :id => "chat_player_id"  %>

@@ -1,5 +1,5 @@
 <% @undisplayed_messages.each do |message| %>
-  <%= raw(display_message(message.content)) %>
+  <%= raw(display_message(message)) %>
 <% end %>
 <% if @undisplayed_messages.size > 0 %>
   soundManager.play('message');
