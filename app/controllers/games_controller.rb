@@ -8,8 +8,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new
-    @game.state = "waiting_for_both_player_login"
-    @game.first_turn = params[:first_turn]
+    @game.state = "waiting_for_both_players"
     @game.password = generate_password(8)
 
     player1 = Player.new
@@ -28,9 +27,14 @@ class GamesController < ApplicationController
     player2.game = @game
 
     Game.transaction do
-      @game.save
       player1.save
       player2.save
+      if params[:first_turn] == 1
+        @game.first_turn = player1.id
+      else
+        @game.first_turn = player2.id
+      end
+      @game.save
     end
     @words = ["a", "head","mouth","eye","eyes","nose","eyes on stalks","skin","one","two","three","blue","green","orange","spotty","squiggly","circular","oval","triangular","happy","sad"]
     render :show
@@ -39,6 +43,13 @@ class GamesController < ApplicationController
   def show
     @player = @game.players.last
     @words = ["a", "head","mouth","eye","eyes","nose","eyes on stalks","skin","one","two","three","blue","green","orange","spotty","squiggly","circular","oval","triangular","happy","sad"]
+    if @game.state = "waiting_for_both_players"
+      if @player.id == @game.first_turn
+        @game.update_attribute(:state, "waiting_for_player1_question")
+      else
+        @game.update_attribute(:state, "waiting_for_player1_question")
+      end
+    end
   end
 
   private
