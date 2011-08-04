@@ -7,6 +7,7 @@ class GameTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: games
@@ -17,5 +18,6 @@ end
 #  first_turn :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 

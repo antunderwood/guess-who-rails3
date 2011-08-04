@@ -4,3 +4,4 @@
 <% if @undisplayed_messages.size > 0 %>
   soundManager.play('message');
 <% end %>
+<%= update_buttons(@game, @player) %>

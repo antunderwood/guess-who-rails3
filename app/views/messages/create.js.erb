@@ -1,2 +1,4 @@
 <%= raw(display_message(@message)) %>
 soundManager.play('message');
+alert('<%= @game.state %>');
+<%= update_buttons(@game, @player) %>
