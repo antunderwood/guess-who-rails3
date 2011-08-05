@@ -17,15 +17,15 @@ class Message < ActiveRecord::Base
     when "chat"
       #  do nothing
     when "response"
-      if self.game.state = "waiting_for_player1_response"
+      if self.game.state == "waiting_for_player1_response"
         self.game.update_attribute(:state, "waiting_for_player1_question")
-      elsif self.game.state = "waiting_for_player2_response"
+      elsif self.game.state == "waiting_for_player2_response"
         self.game.update_attribute(:state, "waiting_for_player2_question")
       end
     when "question"
-      if self.game.state = "waiting_for_player1_question"
+      if self.game.state == "waiting_for_player1_question"
         self.game.update_attribute(:state, "waiting_for_player2_response")
-      elsif self.game.state = "waiting_for_player2_question"
+      elsif self.game.state == "waiting_for_player2_question"
         self.game.update_attribute(:state, "waiting_for_player1_response")
       end
     end

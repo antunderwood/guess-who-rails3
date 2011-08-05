@@ -9,17 +9,25 @@ module MessagesHelper
     message_js << "\"> <h2>"
     message_js << message.player.name
     message_js << "&nbsp;"
-    message_js << "<img src=\"../images/question_mark_button_small.png\"/><"
-    message_js << "/h2></div> <div class=\""
-    logger.info message.player.id
-    logger.info message.game.first_turn
+    message_js << "<img src=\"/images/question_mark_button_small.png\"/>" if message.message_type == "question"
+    message_js << "<img src=\"/images/chat_button.png\"/>" if message.message_type == "chat"
+    message_js << "</h2></div> <div class=\""
     if message.player.id == message.game.first_turn
       message_js << "cssbox_body-blue\">"
     else
       message_js << "cssbox_body-red\">"
     end
-    message_js << escape_javascript(message.content)
-    message_js << " #{message.game.state}"
+    message_js << "Does your alien have " if message.message_type == "question"
+    if message.message_type == "response"
+      if message.content == "Yes"
+        message_js << escape_javascript("<div class='yes_button'>Yes</div>")
+      elsif message.content == "No"
+        message_js << escape_javascript("<div class='no_button'>No</div>")
+      end
+    else
+      message_js << escape_javascript(message.content)
+    end
+    message_js << "?" if message.message_type == "question"
     message_js << "</div></div>');api.reinitialise();"
   end
   
@@ -27,27 +35,27 @@ module MessagesHelper
     case game.state
     when "waiting_for_player1_response"
       if player.id == game.first_turn # player is player 1
-        "alert('wp1r, p1');activate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
+        "activate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
       else # player 2
-        "alert('wp1r, p2');deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
+        "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
       end
     when "waiting_for_player2_response"
       if player.id == game.first_turn # player is player 1
-        "alert('wp2r, p1');deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
+        "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
       else # player 2
-        "alert('wp2r, p2');activate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
+        "activate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
       end
     when "waiting_for_player1_question"
       if player.id == game.first_turn # player is player 1
-        "alert('wp1q, p1');deactivate_response_buttons(); activate_question_buttons(); activate_chat_button();"
+        "deactivate_response_buttons(); activate_question_buttons(); activate_chat_button();"
       else # player 2
-        "alert('wp1q, p2');deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
+        "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
       end
     when "waiting_for_player2_question"
       if player.id == game.first_turn # player is player 1
-        "alert('wp2q, p1');deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
+        "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();"
       else # player 2
-        "alert('wp2q, p2');deactivate_response_buttons(); activate_question_buttons(); activate_chat_button();"
+        "deactivate_response_buttons(); activate_question_buttons(); activate_chat_button();"
       end
     end
   end

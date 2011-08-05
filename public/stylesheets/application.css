@@ -1,81 +1,85 @@
 body{
   font-family: Helvetica, Arial, sans-serif;
   background-color:#212121;
-	color: #FFFFFF;
+  color: #FFFFFF;
 }
 #top_image {
-	margin: 10px auto;
-	padding: 5px 20px;
+  margin: 10px auto;
+  padding: 5px 20px;
+}
+#other_player_link{
+  text-decoration: none;
+  color: #FFFFFF;
 }
 #message_panel {
   position:absolute;
-	top: 15px;
-	left: 600px;
-	width:350px;
-	height:515px;
+  top: 15px;
+  left: 600px;
+  width:350px;
+  height:515px;
   padding-top: 25px;
   padding-left: 15px;
-	overflow: auto;
-	font-size:0.9em;
-	font-family:arial, sans serif;
-	background-color:#AAAAAA;
-	color:#FFFFFF;
-	text-align:left;
+  overflow: auto;
+  font-size:0.9em;
+  font-family:arial, sans serif;
+  background-color:#AAAAAA;
+  color:#FFFFFF;
+  text-align:left;
 }
 .box{
   margin-left: 15px;
   margin-bottom: 20px;
 }
 #question_panel{
-	position:absolute; top: 590px; left:30px;
-	width:  550px;
+  position:absolute; top: 590px; left:30px;
+  width:  550px;
 }
 #response_panel{
-	position:absolute; top: 590px; left:600px;
-	width:  375px;
-	font-size: 0.9em;
-	font-family:arial, sans serif;
+  position:absolute; top: 590px; left:600px;
+  width:  375px;
+  font-size: 0.9em;
+  font-family:arial, sans serif;
 }
 .word_button{
-	margin :  5px 10px 5px 0;
-	padding: 0 5px 0 5px;
-	height:  33px;
-	line-height:  33px;;
-	background:  url("../images/word_button.png");
-	background-repeat:  repeat-x;
-	color:#FFFFFF;
-	border: 2px solid #313131;
-	float:  left;
-	vertical-align: middle;
+  margin :  5px 10px 5px 0;
+  padding: 0 5px 0 5px;
+  height:  33px;
+  line-height:  33px;;
+  background:  url("../images/word_button.png");
+  background-repeat:  repeat-x;
+  color:#FFFFFF;
+  border: 2px solid #313131;
+  float:  left;
+  vertical-align: middle;
 }
 .question{
   color: #34A12E;
   font-size:120%;
 }
-#yes_button, #no_button, #yes_last_card_button, #no_last_card_button{
-	margin :  0px 10px 5px 0;
-	padding: 0 20px 0 20px;
-	height:  33px;
-	line-height:  33px;
-	background-repeat:  repeat-x;
-	color:#FFFFFF;
-	border: 2px solid #313131;
-	float:  left;
-	vertical-align: middle;
-	font-size:  120%;
-	color: #FFFFFF;
-	text-decoration:  none;
+.yes_button, .no_button{
+  padding: 6px 20px 6px 20px;
+  background-repeat:  repeat-x;
+  color:#FFFFFF;
+  border: 2px solid #313131;
+  float:  left;
+  vertical-align: middle;
+  font-size:  120%;
+  color: #FFFFFF;
+  text-decoration:  none;
 }
-#yes_button, #yes_last_card_button{
-	background:  url("../images/yes_button.png");
+#yes_button, #no_button{
+  margin :  0px 10px 5px 0;
 }
-#no_button, #no_last_card_button{
-	background:  url("../images/no_button.png");
+.yes_button {
+  background:  url("../images/yes_button.png");
 }
-#yes_button a, #no_button a, #yes_last_card_button a, #no_last_card_button a{
-	font-size:  120%;
-	color: #FFFFFF;
-	text-decoration:  none;
+.no_button {
+  background:  url("../images/no_button.png");
+}
+.yes_button a, .no_button a {
+  font-size:  120%;
+  color: #FFFFFF;
+  text-decoration:  none;
 }
 #chat_content{
   font-size: 120%;
@@ -87,121 +91,121 @@ body{
 }
 #card-1 {
   position: absolute;
-  top: 80px;
+  top: 90px;
   left:30px;
 }
 #card-2 {
   position: absolute;
-  top: 80px;
+  top: 90px;
   left:120px;
 }
 #card-3 {
   position: absolute;
-  top: 80px;
+  top: 90px;
   left:210px;
 }
 #card-4 {
   position: absolute;
-  top: 80px;
+  top: 90px;
   left:300px;
 }
 #card-5 {
   position: absolute;
-  top: 80px;
+  top: 90px;
   left:390px;
 }
 #card-6 {
   position: absolute;
-  top: 80px;
+  top: 90px;
   left:480px;
 }
 #card-7 {
   position: absolute;
-  top: 203px;
+  top: 213px;
   left:30px;
 }
 #card-8 {
   position: absolute;
-  top: 203px;
+  top: 213px;
   left:120px;
 }
 #card-9 {
   position: absolute;
-  top: 203px;
+  top: 213px;
   left:210px;
 }
 #card-10 {
   position: absolute;
-  top: 203px;
+  top: 213px;
   left:300px;
 }
 #card-11 {
   position: absolute;
-  top: 203px;
+  top: 213px;
   left:390px;
 }
 #card-12 {
   position: absolute;
-  top: 203px;
+  top: 213px;
   left:480px;
 }
 #card-13 {
   position: absolute;
-  top: 326px;
+  top: 336px;
   left:30px;
 }
 #card-14 {
   position: absolute;
-  top: 326px;
+  top: 336px;
   left:120px;
 }
 #card-15 {
   position: absolute;
-  top: 326px;
+  top: 336px;
   left:210px;
 }
 #card-16 {
   position: absolute;
-  top: 326px;
+  top: 336px;
   left:300px;
 }
 #card-17 {
   position: absolute;
-  top: 326px;
+  top: 336px;
   left:390px;
 }
 #card-18 {
   position: absolute;
-  top: 326px;
+  top: 336px;
   left:480px;
 }
 #card-19 {
   position: absolute;
-  top: 449px;
+  top: 459px;
   left:30px;
 }
 #card-20 {
   position: absolute;
-  top: 449px;
+  top: 459px;
   left:120px;
 }
 #card-21 {
   position: absolute;
-  top: 449px;
+  top: 459px;
   left:210px;
 }
 #card-22 {
   position: absolute;
-  top: 449px;
+  top: 459px;
   left:300px;
 }
 #card-23 {
   position: absolute;
-  top: 449px;
+  top: 459px;
   left:390px;
 }
 #card-24 {
   position: absolute;
-  top: 449px;
+  top: 459px;
   left:480px;
 }

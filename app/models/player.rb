@@ -1,6 +1,12 @@
 class Player < ActiveRecord::Base
   belongs_to :game
   has_many :messages
+  
+  before_create :set_last_message_displayed_id
+  
+  def set_last_message_displayed_id
+    self.last_message_displayed_id = 0
+  end
 end
 
 # == Schema Information

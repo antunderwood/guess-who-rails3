@@ -32,5 +32,6 @@
 .cssbox_body-red, .cssbox_body-blue { 
     background-position: bottom left; 
     margin-right:0px; /* interior-padding right */ 
+    height: 30px;
     padding: 15px 0 15px 15px; /* mirror .cssbox_head right/left */ 
 }

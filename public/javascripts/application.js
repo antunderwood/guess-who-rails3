@@ -12,12 +12,15 @@ $(function()
   var scrollPane = $('#message_panel')
   scrollPane.jScrollPane(scrollPaneSettings);
   api = scrollPane.data('jsp');
+  
+  // initial button state
+  deactivate_question_buttons();
+  deactivate_response_buttons();
+  deactivate_chat_button();
 
   // quick flip setup
   $('.card_wrapper').quickFlip({ horizontal: true, panelWidth: 77, panelHeight: 102});
   //deactivate buttons
-  deactivate_question_buttons();
-  deactivate_response_buttons();
 
   // peridic call
   periodic = $.periodic({period: 5000, decay: 1.0}, function() {
@@ -35,9 +38,19 @@ $(function()
       return false;
     }
   });
-  // $("#question_form").bind('ajax:success', function(data, status, xhr) {
-  //   $('#question_content').val("");
-  // });
+  $("#question_form").bind('ajax:success', function(data, status, xhr) {
+    $('#question_content').val("");
+  });
+  
+  //submit chat
+  $('#chat_form').submit(function(){
+    if ($('#chat_content').val() == ""){
+      return false;
+    }
+  });
+  $("#chat_form").bind('ajax:success', function(data, status, xhr) {
+    $('#chat_content').val("");
+  });
 
 });
 
@@ -61,6 +74,7 @@ function activate_question_buttons(){
 }
 // yes no buttons
 var response_via_ajax = function() {
+  $(this).unbind('click', response_via_ajax);
   $.ajax({
     type: 'POST',
     url: "/messages",
@@ -82,6 +96,7 @@ function activate_response_buttons(){
   $('#yes_button').css('background', 'url("/images/yes_button.png")');
   $('#no_button').css('background', 'url("/images/no_button.png")');
   $('#yes_button,#no_button').css('border', '2px solid #313131');
+  $('#yes_button,#no_button').unbind('click', response_via_ajax);
   $('#yes_button,#no_button').bind('click', response_via_ajax);
     
 }
@@ -91,5 +106,5 @@ function deactivate_chat_button(){
 }
 
 function activate_chat_button(){
-  $('#chat_button').attr("disabled", "false");
+  $('#chat_button').removeAttr("disabled");
 }

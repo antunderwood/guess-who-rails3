@@ -42,13 +42,13 @@ class GamesController < ApplicationController
   end
 
   def show
-    @player = @game.players.last
+    @player = @game.players.last # player 2
     @words = Game::WORDS
-    if @game.state = "waiting_for_both_players"
+    if @game.state == "waiting_for_both_players"
       if @player.id == @game.first_turn
-        @game.update_attribute(:state, "waiting_for_player1_question")
-      else
         @game.update_attribute(:state, "waiting_for_player2_question")
+      else
+        @game.update_attribute(:state, "waiting_for_player1_question")
       end
     end
   end

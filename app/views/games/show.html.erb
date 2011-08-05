@@ -5,7 +5,8 @@
 <% end %>
 <!-- Top Image-->
 <div id="top_image">
-	<%= image_tag "guess_who.png" %>
+	<%= image_tag "guess_who.png" %><br>
+	<%= link_to "Link for other player", game_url(@game, :password => @game.password) , :id => "other_player_link" if controller.action_name  == "create" %>
 </div>
 <!-- Cards -->
 <%= render :partial => "card", :collection => (1..24).to_a %>
@@ -26,21 +27,19 @@
 <!-- Response Panel -->
 <div id="response_panel">
   <!-- Chat -->
-  <%= form_tag messages_path, :remote => true %>
+  <%= form_tag messages_path, :remote => true, :id => "chat_form" %>
     <%= hidden_field_tag "message[message_type]", "chat", :id => "chat_message_type"  %>
     <%= hidden_field_tag "message[game_id]", @game.id, :id => "chat_game_id"  %>
     <%= hidden_field_tag "message[player_id]", @player.id, :id => "chat_player_id"  %>
     <%= text_area_tag "message[content]", "", :cols => 26, :rows => 4, :id => "chat_content" %>
     <%= image_submit_tag "chat_button.png", :id => "chat_button" %>
   </form><br/>
-  <div id="yes_button" message_type="response", message_content="Yes", game_id="<%= @game.id %>" player_id="<%= @player.id %>">
+  <div id="yes_button" class="yes_button" message_type="response", message_content="Yes", game_id="<%= @game.id %>" player_id="<%= @player.id %>">
     Yes
   </div>
-  <div id="no_button" message_type="response", message_content="No", game_id="<%= @game.id %>" player_id="<%= @player.id %>">
+  <div id="no_button" class="no_button" message_type="response", message_content="No", game_id="<%= @game.id %>" player_id="<%= @player.id %>">
     No
   </div>
-  <%= link_to "Stop", "#", :id => "stop" %>
-  <%= link_to "Start", "#", :id => "start" %>
+  <!-- <%= link_to "Stop", "#", :id => "stop" %>
+  <%= link_to "Start", "#", :id => "start" %> -->
 </div>
-<h1>Game <%= @game.id %></h1>
-<%= @player.name %> has chosen card number <%= @player.chosen_card %>
