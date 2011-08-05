@@ -1,7 +1,7 @@
 <% content_for :javascript do %>
   <%= javascript_include_tag "soundmanager2-jsmin" %>
   <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "jquery.jscrollpane.min", "jquery.mousewheel", "jquery.quickflip.min", "jquery.periodic" %>
+  <%= javascript_include_tag "jquery.jscrollpane.min", "jquery.mousewheel", "jquery.quickflip.min", "jquery.periodic", "jquery.reveal" %>
 <% end %>
 <!-- Top Image-->
 <div id="top_image">
@@ -9,7 +9,8 @@
 	<%= link_to "Link for other player", game_url(@game, :password => @game.password) , :id => "other_player_link" if controller.action_name  == "create" %>
 </div>
 <!-- Cards -->
-<%= render :partial => "card", :collection => (1..24).to_a %>
+<%= render :partial => "card", :collection => (1..24).to_a - [@player.chosen_card] %>
+<%= render :partial => "card", :object => @player.chosen_card%>
 <!-- Ask a question panel -->
 <div id="question_panel">
   <%= form_tag messages_path, :remote => true, :id => "question_form" %>
@@ -42,4 +43,9 @@
   </div>
   <!-- <%= link_to "Stop", "#", :id => "stop" %>
   <%= link_to "Start", "#", :id => "start" %> -->
+</div>
+<div id="notice_modal" class="reveal-modal">
+     <h1>Almost there!</h1>
+     <p id="notice_modal_content"></p>
+     <a class="close-reveal-modal">&#215;</a>
 </div>

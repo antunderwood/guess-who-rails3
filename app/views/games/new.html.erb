@@ -15,7 +15,39 @@
 			<td><%= select_tag "first_turn", options_for_select(['1', '2']) %></td>
 		</tr>
 	</table>
-	<%= submit_tag "Create game" %> 
+	<%= submit_tag "Create game" %>
+  <h2>Previous Games</h2>
+  <table>
+  <%- @previous_games.each do |game| -%>
+    <tr>
+      <td>
+        <%- if game.state =~ /won/ -%>
+          <%- if game.state =~ /player1_won/ -%>
+            You won
+          <%- else -%>
+            <%= game.players.last.name %> won
+          <%- end -%>
+        <%- else -%>
+          <%= link_to "Enter game", game_url(game) %>
+        <%- end -%>
+      </td>
+      <td>
+        <%- if game.state =~ /won/ -%>
+          &nbsp;
+        <%- else -%>
+          <%= link_to "Link for other player", game_url(game, :password => game.password) %>
+        <%- end -%>
+      </td>
+      <td>
+        <%- if game.state =~ /won/ -%>
+          &nbsp;
+        <%- else -%>
+          <%= game.state.capitalize.gsub(/_/, " ") %>
+        <%- end -%>
+      </td>
+    </tr>
+    <%- end -%>
+    </table>
 </form>
 
   

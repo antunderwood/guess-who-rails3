@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   before_filter :game_accessible?, :only => :show
 
   def new
-
+    @previous_games = current_user.games.recent
   end
 
   def create
@@ -42,7 +42,11 @@ class GamesController < ApplicationController
   end
 
   def show
-    @player = @game.players.last # player 2
+    if current_user
+      @player = @game.players.first
+    else
+      @player = @game.players.last
+    end  # player 2
     @words = Game::WORDS
     if @game.state == "waiting_for_both_players"
       if @player.id == @game.first_turn
@@ -63,9 +67,16 @@ class GamesController < ApplicationController
   def game_accessible?
     if @game.nil?
       @game = Game.find(params[:id])
-      if @game.password != params[:password]
-        flash[:error] = "You do not have permissions to access that game. If you would like to start a new game please fill in the details below"
-        redirect_to root_path
+      if current_user.nil?
+        if @game.password != params[:password]
+          flash[:error] = "You do not have permissions to access that game. If you would like to start a new game please fill in the details below"
+          redirect_to root_path
+        end
+      else
+        if @game.user != current_user
+          flash[:error] = "You do not have permissions to access that game. If you would like to start a new game please fill in the details below"
+          redirect_to root_path
+        end
       end
     end
   end

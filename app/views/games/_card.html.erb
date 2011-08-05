@@ -1,11 +1,17 @@
-<div id="card-<%= card %>" class="card">
-  <div class="card_wrapper">
+<div id="card-<%= defined?(card_counter) ? card_counter + 1 : 24 %>" class="card">
+  <div <%= "class='card_wrapper'" if defined?(card_counter) %> >
     <div>
-    <%= image_tag "#{card}.png", :class => "quickFlipCta" %>
+    <%= image_tag "#{card}.png", :class => "quickFlipCta front_of_card" %>
     </div>
-
-    <div>
-    <%= image_tag "eliminated.png", :class => "quickFlipCta" %>
+    <%- if defined?(card_counter) %>
+      <div>
+      <%= image_tag "eliminated.png", :class => "quickFlipCta back_of_card" %>
     </div>
+    <%- else -%>
+      <div>
+        <b>Your card</b>
+      </div>
+    <%- end -%>
   </div>
+  <div><%= Game::NAMES[card-1] %></div>
 </div>

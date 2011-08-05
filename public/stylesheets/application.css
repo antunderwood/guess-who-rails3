@@ -31,7 +31,7 @@ body{
   margin-bottom: 20px;
 }
 #question_panel{
-  position:absolute; top: 590px; left:30px;
+  position:absolute; top: 610px; left:30px;
   width:  550px;
 }
 #response_panel{
@@ -205,6 +205,7 @@ body{
   left:390px;
 }
 #card-24 {
+  border: 2px solid #FF0000;
   position: absolute;
   top: 459px;
   left:480px;

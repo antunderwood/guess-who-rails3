@@ -3,6 +3,7 @@
 soundManager.url = '/sounds/'; // override default SWF url
 soundManager.debugMode = false;
 soundManager.onload = function() {soundManager.createSound('message','/sounds/message.mp3');};
+var names = ["Snooz", "Zarg", "Sassle", "Gira", "Zog", "Yop", "Matag", "Pieb", "Uno", "Tonil", "Ufusi", "Veop", "Moog", "Jolod", "Pokov", "Zebo", "Hoobla", "Mush", "Gotat", "Zaphod", "Norboo", "Foobar", "Linrot", "Tag"]
 $(function()
 {
   var scrollPaneSettings = {
@@ -23,9 +24,25 @@ $(function()
   //deactivate buttons
 
   // peridic call
-  periodic = $.periodic({period: 5000, decay: 1.0}, function() {
+  periodic = $.periodic({period: 20000, decay: 1.0}, function() {
     message_url = '/messages?game_id='  + $('#question_game_id').val() + '&player_id=' + $('#question_player_id').val();
     $.ajax({url: message_url });
+    var number_of_eliminated_cards = 0;
+    var cards_in_play = [];
+    $(".card_wrapper").children().children(".front_of_card").each(function(){
+      if ($(this).parent().css('display') == "none"){
+        number_of_eliminated_cards = number_of_eliminated_cards + 1;
+      } else {
+        var image_src = $(this).attr('src');
+        var regexp = /(\d+)\.png/;
+        var match = regexp.exec(image_src);
+        cards_in_play.push(names[parseInt(match[1])-1]);
+      }
+    });
+    if (number_of_eliminated_cards == 22){
+      $("#notice_modal_content").html(cards_in_play[0]);
+      $("#notice_modal").reveal();
+    }
   });
   $('#stop').click(function(){periodic.cancel();});
   $('#start').click(function(){periodic.reset();});
