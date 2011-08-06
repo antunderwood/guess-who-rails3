@@ -46,16 +46,16 @@ class GamesController < ApplicationController
       @player = @game.players.first
     else
       @player = @game.players.last
+      if @game.state == "waiting_for_both_players"
+        Message.create(:game_id  => @game.id, :message_type  => "notification", :content => "Both players are ready to play")
+        if @player.id == @game.first_turn
+          @game.update_state("waiting_for_player2_question")
+        else
+          @game.update_state("waiting_for_player1_question")
+        end
+      end
     end  # player 2
     @words = Game::WORDS
-    if @game.state == "waiting_for_both_players"
-      Message.create(:game_id  => @game.id, :message_type  => "notification", :content => "Both players are ready to play")
-      if @player.id == @game.first_turn
-        @game.update_state("waiting_for_player2_question")
-      else
-        @game.update_state("waiting_for_player1_question")
-      end
-    end
   end
   
   def destroy
