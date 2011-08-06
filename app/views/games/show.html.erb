@@ -6,7 +6,7 @@
 <!-- Top Image-->
 <div id="top_image">
 	<%= image_tag "guess_who.png" %><br>
-	<%= link_to "Link for other player", game_url(@game, :password => @game.password) , :id => "other_player_link" if controller.action_name  == "create" %>
+	<%= link_to "Link for other player", game_url(@game, :password => @game.password) , :id => "other_player_link" if current_user %>
 </div>
 <!-- Cards -->
 <%= render :partial => "card", :collection => (1..24).to_a - [@player.chosen_card] %>

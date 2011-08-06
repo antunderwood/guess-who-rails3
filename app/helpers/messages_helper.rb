@@ -33,6 +33,10 @@ module MessagesHelper
         message_js << escape_javascript("<div class='no_button'>No</div>")
       end
     else
+      logger.info @player.name
+      logger.info message.content
+      message.content.sub!(/#{@player.name}'s/, "Your") if message.content =~ /#{@player.name}/
+      logger.info message.content
       message_js << escape_javascript(message.content)
     end
     message_js << "?" if message.message_type == "question"
@@ -42,31 +46,31 @@ module MessagesHelper
   def update_buttons(game, player)
     case game.state
     when "waiting_for_player1_response"
-      if player.id == game.first_turn # player is player 1
+      if player.id == game.players.first.id # player is player 1
         "activate_response_buttons(); deactivate_question_buttons(); activate_chat_button();activate_guess_button();"
       else # player 2
         "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();activate_guess_button();"
       end
     when "waiting_for_player2_response"
-      if player.id == game.first_turn # player is player 1
+      if player.id == game.players.first.id # player is player 1
         "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();activate_guess_button();"
       else # player 2
         "activate_response_buttons(); deactivate_question_buttons(); activate_chat_button();activate_guess_button();"
       end
     when "waiting_for_player1_question"
-      if player.id == game.first_turn # player is player 1
+      if player.id == game.players.first.id # player is player 1
         "deactivate_response_buttons(); activate_question_buttons(); activate_chat_button();activate_guess_button();"
       else # player 2
         "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();activate_guess_button();"
       end
     when "waiting_for_player2_question"
-      if player.id == game.first_turn # player is player 1
+      if player.id == game.players.first.id # player is player 1
         "deactivate_response_buttons(); deactivate_question_buttons(); activate_chat_button();activate_guess_button();"
       else # player 2
         "deactivate_response_buttons(); activate_question_buttons(); activate_chat_button();activate_guess_button();"
       end
     when /won/
-      "deactivate_response_buttons(); deactivate_question_buttons(); deactivate_chat_button();  deactivate_guess_button();"
+      "deactivate_response_buttons(); deactivate_question_buttons();deactivate_guess_button();"
     end
   end
 end
