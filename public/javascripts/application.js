@@ -18,6 +18,7 @@ $(document).ready(function() {
   deactivate_question_buttons();
   deactivate_response_buttons();
   deactivate_chat_button();
+  deactivate_guess_button();
 
   // quick flip setup
   $('.card_wrapper').quickFlip({ horizontal: true, panelWidth: 77, panelHeight: 102});

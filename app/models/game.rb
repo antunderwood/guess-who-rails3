@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
   WORDS = ["a", "head","mouth","eye","eyes","nose","eyes on stalks","skin","one","two","three","blue","green","orange","spotty","squiggly","circular","oval","triangular","happy","sad"]
   NAMES = ["Snooz", "Zarg", "Sassle", "Gira", "Zog", "Yop", "Matag", "Pieb", "Uno", "Tonil", "Ufusi", "Veop", "Moog", "Jolod", "Pokov", "Zebo", "Hoobla", "Mush", "Gotat", "Zaphod", "Norboo", "Foobar", "Linrot", "Tag"]
   
-  scope :recent, order(:id).limit(5)
+  scope :recent, order("id DESC").limit(5)
   
   def update_state(new_state)
     self.update_attribute(:state, new_state)
