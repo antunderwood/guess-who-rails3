@@ -6,7 +6,11 @@
     background: transparent url(../images/Blue-Box.png) no-repeat bottom right; 
 }
 
-.cssbox-red, .cssbox-blue{ 
+.cssbox-green, .cssbox_body-green, .cssbox_head-green, .cssbox_head-green h2 {
+    background: transparent url(../images/Green-Box.png) no-repeat bottom right; 
+}
+
+.cssbox-red, .cssbox-blue, .cssbox-green{ 
     width: 295px !important; /* intended total box width - padding-right(next) */
     width: 280px; /* IE Win = width - padding */
     padding-right: 15px; /* the gap on the right edge of the image (not content padding) */
@@ -14,13 +18,13 @@
 } 
 
 /* set the top-right image */ 
-.cssbox_head-red, .cssbox_head-blue{ 
+.cssbox_head-red, .cssbox_head-blue, .cssbox_head-green { 
     background-position: top right; margin-right: -15px; /* pull the right image over on top of border */
     padding-right: 15px; /* right-image-gap + right-inside padding */ 
 } 
 
 /* set the top-left image */ 
-.cssbox_head-red h2,.cssbox_head-blue h2 { 
+.cssbox_head-red h2,.cssbox_head-blue h2, .cssbox_head-green h2 { 
     background-position: top left; 
     margin: 0; /* reset main site styles*/ 
     border: 0; /* ditto */ 
@@ -29,7 +33,7 @@
 } 
 
 /* set the lower-left corner image */ 
-.cssbox_body-red, .cssbox_body-blue { 
+.cssbox_body-red, .cssbox_body-blue , .cssbox_body-green{ 
     background-position: bottom left; 
     margin-right:0px; /* interior-padding right */ 
     height: 30px;

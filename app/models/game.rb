@@ -7,6 +7,14 @@ class Game < ActiveRecord::Base
   NAMES = ["Snooz", "Zarg", "Sassle", "Gira", "Zog", "Yop", "Matag", "Pieb", "Uno", "Tonil", "Ufusi", "Veop", "Moog", "Jolod", "Pokov", "Zebo", "Hoobla", "Mush", "Gotat", "Zaphod", "Norboo", "Foobar", "Linrot", "Tag"]
   
   scope :recent, order(:id).limit(5)
+  
+  def update_state(new_state)
+    self.update_attribute(:state, new_state)
+    message_content = new_state.capitalize.gsub(/_/, " ")
+    message_content.sub!("player1", "#{self.players.first.name}'s")
+    message_content.sub!("player2", "#{self.players.last.name}'s")
+    Message.create(:game_id  => self.id, :message_type  => "notification", :content => message_content)
+  end
 end
 
 

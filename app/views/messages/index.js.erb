@@ -1,4 +1,12 @@
 <% @undisplayed_messages.each do |message| %>
+  <%- if message.message_type == "notification" && message.content =~ /won/ -%>
+         <%- if message.content =~ /#{@player.name}/ -%>
+          <%- message.content.sub!(/#{@player.name}/, "You") -%>
+          reveal_final_message('Hurrah', '<%= message.content %>');
+        <%- else -%>
+          reveal_final_message('Uh oh', '<%= message.content %>');
+        <%- end -%>
+  <%- end -%>
   <%= raw(display_message(message)) %>
 <% end %>
 <% if @undisplayed_messages.size > 0 %>

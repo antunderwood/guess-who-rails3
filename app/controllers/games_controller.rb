@@ -49,11 +49,25 @@ class GamesController < ApplicationController
     end  # player 2
     @words = Game::WORDS
     if @game.state == "waiting_for_both_players"
+      Message.create(:game_id  => @game.id, :message_type  => "notification", :content => "Both players are ready to play")
       if @player.id == @game.first_turn
-        @game.update_attribute(:state, "waiting_for_player2_question")
+        @game.update_state("waiting_for_player2_question")
       else
-        @game.update_attribute(:state, "waiting_for_player1_question")
+        @game.update_state("waiting_for_player1_question")
       end
+    end
+  end
+  
+  def destroy
+    @game = Game.find(params[:id])
+    @final_card = params[:final_card]
+    @player = Player.find(params[:player_id])
+    other_player = (@game.players - [@player.id]).first
+
+    if @final_card.to_i == other_player.chosen_card
+      @game.update_state("#{@player.name} won")
+    else
+      @game.update_state("#{other_player.name} won")
     end
   end
 

@@ -56,7 +56,7 @@ body{
   color: #34A12E;
   font-size:120%;
 }
-.yes_button, .no_button{
+.yes_button, .no_button, .guess_button{
   padding: 6px 20px 6px 20px;
   background-repeat:  repeat-x;
   color:#FFFFFF;
@@ -67,7 +67,7 @@ body{
   color: #FFFFFF;
   text-decoration:  none;
 }
-#yes_button, #no_button{
+#yes_button, #no_button, .guess_button{
   margin :  0px 10px 5px 0;
 }
 .yes_button {
@@ -76,7 +76,10 @@ body{
 .no_button {
   background:  url("../images/no_button.png");
 }
-.yes_button a, .no_button a {
+.guess_button {
+  background:  url("../images/guess_button.png");
+}
+.yes_button a, .no_button a, .guess_button a {
   font-size:  120%;
   color: #FFFFFF;
   text-decoration:  none;
